@@ -7,11 +7,10 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "humao.rest-client",
         "vscjava.vscode-java-pack",
         "vmware.vscode-spring-boot",
-        "vscjava.vscode-spring-initializr",
-        "mtxr.sqltools",
-        "mtxr.sqltools-driver-pg"
+        "vscjava.vscode-spring-initializr"
       ]
     }
   },
