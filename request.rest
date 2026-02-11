@@ -6,8 +6,22 @@ POST http://localhost:8080/api/products
 Content-Type: application/json
 
 {
+    "name": "Pixel 8",
+    "description": "Un formidable telephone pour appeler",
+    "price": 599.99,
+    "stock": 3
+}
+###
+PUT http://localhost:8080/api/products/1
+Content-Type: application/json
+
+{
     "name": "Nexus 5",
     "description": "Un formidable telephone pour appeler aussi",
     "price": 99.99,
-    "stock": 5
+    "stock": 4
 }
+###
+DELETE http://localhost:8080/api/products/1
+###
+GET http://localhost:8080/api/products/search?name=pixel

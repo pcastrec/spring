@@ -8,6 +8,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 @RestController
 @RequestMapping("/api/products")
@@ -36,4 +43,24 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
+    // UPDATE
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductDTO> updateProduct(
+        @PathVariable Long id,
+        @Valid @RequestBody ProductDTO productDTO
+    ) {
+        return ResponseEntity.ok(this.productService.updateProduct(id, productDTO));
+    }
+
+    // DELETE
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteProduct(@PathVariable Long id) {
+        return ResponseEntity.ok(this.productService.deleteProduct(id));
+    }
+
+    // SEARCH
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductDTO>> searchProducts(@RequestParam String name) {
+        return ResponseEntity.ok(this.productService.searchByName(name));
+    }
 }

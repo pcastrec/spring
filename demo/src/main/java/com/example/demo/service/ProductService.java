@@ -1,14 +1,15 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.ProductDTO;
-import com.example.demo.model.Product;
-import com.example.demo.repository.ProductRepository;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import com.example.demo.dto.ProductDTO;
+import com.example.demo.model.Product;
+import com.example.demo.repository.ProductRepository;
 
 @Service
 @Transactional
@@ -56,6 +57,11 @@ public class ProductService {
         }
         this.productRepository.deleteById(id);
         return true;
+    }
+
+    public List<ProductDTO> getProductsByCategory(Long categoryId) {
+        return this.productRepository.findByCategoryId(categoryId)
+        .stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
     public List<ProductDTO> searchByName(String name) {
