@@ -1,0 +1,13 @@
+GET http://localhost:8080/api/categories
+###
+GET http://localhost:8080/api/categories/1
+###
+GET http://localhost:8080/api/categories/1/products
+###
+POST http://localhost:8080/api/categories
+Content-Type: application/json
+
+{
+    "name": "Electronics",
+    "description": "Anything related to electronics"
+}

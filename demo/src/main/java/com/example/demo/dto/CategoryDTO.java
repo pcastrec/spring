@@ -16,8 +16,4 @@ public class CategoryDTO {
 
     @Size(max = 500, message = "La description ne peut pas depasser 500 caracteres")
     private String description;
-
-    @NotNull(message = "La categorie est obligatoire")
-    private Category category;
-
 }

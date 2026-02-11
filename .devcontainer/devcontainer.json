@@ -3,7 +3,6 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "application",
   "workspaceFolder": "/workspace",
-  
   "customizations": {
     "vscode": {
       "extensions": [
@@ -14,7 +13,6 @@
       ]
     }
   },
-  
-  "postCreateCommand": "if [ -f mvnw ]; then chmod +x mvnw && ./mvnw dependency:resolve; fi",
+  "postCreateCommand": "sudo chown -R vscode:vscode /home/vscode/.m2; if [ -f mvnw ]; then chmod +x mvnw && ./mvnw dependency:resolve; fi",
   "remoteUser": "vscode"
 }

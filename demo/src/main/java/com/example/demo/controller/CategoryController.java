@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.CategoryDTO;
 import com.example.demo.service.CategoryService;
 
 import jakarta.validation.Valid;
 
+@RestController
+@RequestMapping("/api/categories")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -39,16 +43,14 @@ public class CategoryController {
         CategoryDTO created = this.categoryService.createCategory(categoryDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
-
-    // UPDATE
+    
     @PutMapping("/{id}")
     public ResponseEntity<CategoryDTO> updateProduct(
             @PathVariable Long id,
             @Valid @RequestBody CategoryDTO categoryDTO) {
         return ResponseEntity.ok(this.categoryService.updateCategory(id, categoryDTO));
     }
-
-    // DELETE
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteCategory(@PathVariable Long id) {
         return ResponseEntity.ok(this.categoryService.deleteCategory(id));

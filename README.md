@@ -61,7 +61,7 @@ Une fois dans le conteneur, ouvrez un terminal (`Ctrl+Shift+ù`) :
 
 ```bash
 # Lancer l'application
-sudo ./mvnw spring-boot:run
+./mvnw spring-boot:run
 ```
 
 Vous devriez voir :
@@ -83,7 +83,7 @@ Seulement si vous ajoutez des dépendances :
     # 1. Modifier pom.xml (ajouter une dépendance)
     # 2. Arrêter le serveur (Ctrl+C)
     # 3. Recharger les dépendances
-    sudo ./mvnw clean install
+    ./mvnw clean install
     # 4. Relancer
-    sudo ./mvnw spring-boot:run
+    ./mvnw spring-boot:run
 ```

@@ -42,8 +42,7 @@ public class ProductController {
         ProductDTO created = this.productService.createProduct(productDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
-
-    // UPDATE
+    
     @PutMapping("/{id}")
     public ResponseEntity<ProductDTO> updateProduct(
         @PathVariable Long id,
@@ -51,14 +50,12 @@ public class ProductController {
     ) {
         return ResponseEntity.ok(this.productService.updateProduct(id, productDTO));
     }
-
-    // DELETE
+    
     @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> deleteProduct(@PathVariable Long id) {
         return ResponseEntity.ok(this.productService.deleteProduct(id));
     }
-
-    // SEARCH
+    
     @GetMapping("/search")
     public ResponseEntity<List<ProductDTO>> searchProducts(@RequestParam String name) {
         return ResponseEntity.ok(this.productService.searchByName(name));

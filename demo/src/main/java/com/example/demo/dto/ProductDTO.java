@@ -23,4 +23,9 @@ public class ProductDTO {
     @NotNull(message = "Le stock est obligatoire")
     @Min(value = 0, message = "Le stock ne peut pas etre negatif")
     private Integer stock;
+
+    // Categories Fields
+    private Long categoryId;
+    private String categoryName;
+    private String categoryDescription;
 }

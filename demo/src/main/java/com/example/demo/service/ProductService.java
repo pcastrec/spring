@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.dto.ProductDTO;
+import com.example.demo.model.Category;
 import com.example.demo.model.Product;
+import com.example.demo.repository.CategoryRepository;
 import com.example.demo.repository.ProductRepository;
 
 @Service
@@ -16,9 +18,11 @@ import com.example.demo.repository.ProductRepository;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
         this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     public List<ProductDTO> getAllProducts() {
@@ -71,13 +75,34 @@ public class ProductService {
 
     private ProductDTO convertToDTO(Product product) {
         ProductDTO dto = new ProductDTO();
-        BeanUtils.copyProperties(product, dto);
+        dto.setId(product.getId());
+        dto.setName(product.getName());
+        dto.setDescription(product.getDescription());
+        dto.setPrice(product.getPrice());
+        dto.setStock(product.getStock());
+
+        if(product.getCategory() != null) {
+            dto.setCategoryId(product.getCategory().getId());
+            dto.setCategoryName(product.getCategory().getName());
+            dto.setCategoryDescription(product.getCategory().getDescription());
+        }
+
         return dto;
     }
 
     private Product convertToEntity(ProductDTO dto) {
         Product product = new Product();
-        BeanUtils.copyProperties(dto, product);
+        product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
+        product.setPrice(dto.getPrice());
+        product.setStock(dto.getStock());
+
+        if(dto.getCategoryId() != null) {
+            Category category = this.categoryRepository.findById(dto.getCategoryId())
+            .orElseThrow(() -> new RuntimeException("Category " + dto.getCategoryId() + " not found"));
+            product.setCategory(category);
+        }
+
         return product;
     }
 }

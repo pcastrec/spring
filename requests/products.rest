@@ -9,17 +9,19 @@ Content-Type: application/json
     "name": "Pixel 8",
     "description": "Un formidable telephone pour appeler",
     "price": 599.99,
-    "stock": 3
+    "stock": 3,
+    "categoryId": 1
 }
 ###
-PUT http://localhost:8080/api/products/1
+PUT http://localhost:8080/api/products/2
 Content-Type: application/json
 
 {
     "name": "Nexus 5",
     "description": "Un formidable telephone pour appeler aussi",
     "price": 99.99,
-    "stock": 4
+    "stock": 4,
+    "categoryId": 1
 }
 ###
 DELETE http://localhost:8080/api/products/1
