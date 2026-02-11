@@ -14,18 +14,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.CategoryDTO;
+import com.example.demo.dto.ProductDTO;
 import com.example.demo.service.CategoryService;
-
+import com.example.demo.service.ProductService;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/api/categories")
 public class CategoryController {
 
+    private final ProductService productService;
     private final CategoryService categoryService;
 
-    public CategoryController (CategoryService categoryService) {
+    public CategoryController (CategoryService categoryService, ProductService productService) {
         this.categoryService = categoryService;
+        this.productService = productService;
     }
 
     @GetMapping
@@ -36,6 +41,11 @@ public class CategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable Long id) {
         return ResponseEntity.ok(this.categoryService.getCategoryById(id));
+    }
+
+    @GetMapping("/{id}/products")
+    public ResponseEntity<List<ProductDTO>> findProductsByCategory(@PathVariable Long id) {
+        return ResponseEntity.ok(this.productService.getProductsByCategory(id));
     }
 
     @PostMapping

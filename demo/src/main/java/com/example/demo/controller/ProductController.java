@@ -27,9 +27,11 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
+    public ResponseEntity<List<ProductDTO>> getAllProducts(@RequestParam(required = false) Long categoryId) {
+        if(categoryId != null) {
+            return ResponseEntity.ok(this.productService.getProductsByCategory(categoryId));
+        }
         return ResponseEntity.ok(this.productService.getAllProducts());
-        // return ResponseEntity.status(HttpStatus.OK).body(this.productService.getAllProducts());
     }
 
     @GetMapping("/{id}")

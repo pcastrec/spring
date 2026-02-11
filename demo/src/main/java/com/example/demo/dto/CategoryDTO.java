@@ -1,8 +1,7 @@
 package com.example.demo.dto;
 
-import com.example.demo.model.Category;
-
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Data
