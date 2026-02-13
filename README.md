@@ -60,6 +60,8 @@ VS Code détectera automatiquement la configuration Dev Container :
 Une fois dans le conteneur, ouvrez un terminal (`Ctrl+Shift+ù`) :
 
 ```bash
+# Aller dans demo
+cd ./demo
 # Lancer l'application
 ./mvnw spring-boot:run
 ```
@@ -80,10 +82,10 @@ Started DemoApplication in 2.5 seconds
 ## Quand redémarrer manuellement ?
 Seulement si vous ajoutez des dépendances :
 ``` bash
-    # 1. Modifier pom.xml (ajouter une dépendance)
-    # 2. Arrêter le serveur (Ctrl+C)
-    # 3. Recharger les dépendances
-    ./mvnw clean install
-    # 4. Relancer
-    ./mvnw spring-boot:run
+# 1. Modifier pom.xml (ajouter une dépendance)
+# 2. Arrêter le serveur (Ctrl+C)
+# 3. Recharger les dépendances
+./mvnw clean install
+# 4. Relancer
+./mvnw spring-boot:run
 ```

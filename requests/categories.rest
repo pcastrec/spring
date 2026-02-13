@@ -1,4 +1,6 @@
 GET http://localhost:8080/api/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYXN0cmVjIiwiaWF0IjoxNzcwOTk0NTEzLCJleHAiOjE3NzEwODA5MTN9.ZANyWgGTn3ENIg1PFkfMa24gA8RFt0zuh19itdPtx_g
+
 ###
 GET http://localhost:8080/api/categories/1
 ###

@@ -20,11 +20,6 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import lombok.Data;
 
-enum Role {
-    USER,
-    ADMIN
-}
-
 @Entity
 @Table(name = "users")
 @Data

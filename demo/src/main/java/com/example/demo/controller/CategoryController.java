@@ -17,8 +17,8 @@ import com.example.demo.dto.CategoryDTO;
 import com.example.demo.dto.ProductDTO;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.ProductService;
+
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController

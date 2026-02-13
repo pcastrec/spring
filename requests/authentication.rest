@@ -1,0 +1,8 @@
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+    "username": "castrec",
+    "email": "p.castrec@aol.com",
+    "password": "ok_hand"
+}
